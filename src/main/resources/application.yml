@@ -1,0 +1,23 @@
+file:
+  basePath:
+spring:
+  application:
+    admin:
+      enabled: true
+      jmx-name: org.springframework.boot:type=Admin
+  datasource:
+    driverClassName: org.h2.Driver
+    password: ''
+    url: jdbc:h2:mem:FILESDIFF
+    username: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+storage:
+  url: https://nyc3.digitaloceanspaces.com
+  accessKey: ${BUCKET_ACCESS_KEY}
+  secretKey: ${BUCKET_SECRET_KEY}
+  bucketName: filesdiff

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filesdiff
+  labels:
+    app: filesdiff
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: filesdiff
+  template:
+    metadata:
+      labels:
+        app: filesdiff
+    spec:
+      containers:
+        - name: filesdiff
+          image: gabrielf97/filesdiff:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: BUCKET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: filesdiff-secret
+                  key: username
+            - name: BUCKET_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: filesdiff-secret
+                  key: password

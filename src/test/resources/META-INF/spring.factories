@@ -1,0 +1,3 @@
+org.springframework.test.context.TestExecutionListener=\
+  com.diff.filesdiff.config.RestAssuredExecutionListener,\
+  com.diff.filesdiff.config.S3BucketExecutionListener
