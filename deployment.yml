@@ -5,7 +5,7 @@ metadata:
   labels:
     app: filesdiff
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: filesdiff
@@ -20,13 +20,13 @@ spec:
           ports:
             - containerPort: 80
           env:
-            - name: BUCKET_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: filesdiff-secret
-                  key: username
             - name: BUCKET_SECRET_KEY
               valueFrom:
                 secretKeyRef:
                   name: filesdiff-secret
-                  key: password
+                  key: secretKey
+            - name: BUCKET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: filesdiff-secret
+                  key: accessKey
